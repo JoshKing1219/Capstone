@@ -1,0 +1,636 @@
+body {
+  margin: 0;
+}
+
+#navbar {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+  padding: 25px;
+}
+
+.navbar-link:visited {
+  color: fuchsia;
+}
+
+.navbar-link:hover {
+  color: lime;
+}
+
+/* Home Page Styling */
+#home-page {
+  background-image: url("./assets/home-page-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#intro-container,
+#disclosures-container,
+#entrance-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+}
+
+#intro-title,
+#disclosures-container,
+#disclosure-title {
+  background-color: rgb(128, 128, 128, 0.5);
+  border: 4px dashed black;
+}
+
+#intro-title {
+  color: ghostwhite;
+  text-align: center;
+  font-size: 5.5rem;
+  border-radius: 10%;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+#disclosure-title {
+  color: ghostwhite;
+  text-align: center;
+  font-size: 3rem;
+  border-radius: 45%;
+  padding: 40px;
+}
+
+#disclosures-list {
+  color: ghostwhite;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+#disclosures-container {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+#entrance-button-container {
+  margin-top: 50px;
+  padding-bottom: 75px;
+}
+
+#entrance-button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: darkmagenta;
+  box-shadow: 0 0 7px 12px lime;
+  border: none;
+  color: ghostwhite;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#entrance-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#entrance-button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#entrance-button:hover span {
+  padding-right: 25px;
+}
+
+#entrance-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* All Theories Page Styling */
+
+#all-theories-page {
+  background-image: url("./assets/all-theories-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#theory-library,
+#library-intro-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#library-intro-title {
+  color: cyan;
+  font-size: 2.7rem;
+  text-align: center;
+}
+
+.library-descrip {
+  color: cyan;
+  width: 30vw;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+#dropdown-button {
+  background-image: linear-gradient(to top left, cyan, royalblue);
+  color: ghostwhite;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+#dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-image: linear-gradient(to top left, lightseagreen, forestgreen);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content .theory-type {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content .theory-type:hover {
+  background-color: lightgreen;
+}
+
+#dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#dropdown:hover #dropdown-button {
+  cursor: pointer;
+}
+
+.theory-container {
+  width: 35vw;
+  text-align: center;
+  padding: 10px;
+  margin: 20px;
+  background-color: darkorchid;
+  border-radius: 7%;
+  box-shadow: 10px 10px 5px green;
+}
+
+.theory-image {
+  width: 30vw;
+}
+
+.theory-details-container {
+  padding: 25px;
+}
+
+.details-button {
+  width: 13vw;
+  padding: 15px;
+  border: none;
+  box-shadow: 5px -5px 3px black;
+  background-color: darkgreen;
+  color: ghostwhite;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.details-button:hover {
+  cursor: pointer;
+  background-image: linear-gradient(to bottom right, deeppink, darkorchid);
+}
+
+.theory-title {
+  color: springgreen;
+  font-size: 1.5rem;
+}
+
+/* Styling for the registration page */
+#registration-page {
+  background-image: url("./assets/registration-bg.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#registration-error-message {
+  width: 17vw;
+  padding: 17px;
+  color: black;
+  border: none;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 139, 139, 0.9),
+    rgba(95, 158, 160, 0.6)
+  );
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+#registration-intro-container,
+#registration-disclosure-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#registration-intro-title {
+  width: 35vw;
+  padding: 25px;
+  color: ghostwhite;
+  font-size: 3.2rem;
+  border: hidden;
+  border-radius: 35px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(220, 20, 60, 0.8),
+    rgba(250, 128, 114, 0.4)
+  );
+}
+
+.registration-descrip {
+  width: 35vw;
+  padding: 25px;
+  color: ghostwhite;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: hidden;
+  border-radius: 25px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(128, 0, 0, 0.8),
+    rgba(255, 99, 71, 0.4)
+  );
+}
+
+#registration-form {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin: auto;
+  padding: 25px;
+  width: 35vw;
+  border: none;
+  border-radius: 35px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 127, 80, 0.8),
+    rgba(178, 34, 34, 0.4)
+  );
+}
+
+#registration-form-container {
+  padding-top: 25px;
+  padding-bottom: 50px;
+}
+
+.registration-label {
+  padding-bottom: 15px;
+  color: ghostwhite;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.registration-input {
+  border: 2px dashed darkred;
+  height: 25px;
+  width: 20vw;
+  display: block;
+  margin-top: 7px;
+}
+
+#registration-submission-button {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  height: 35px;
+  width: 15vw;
+  color: ghostwhite;
+  border: none;
+  background-image: linear-gradient(to bottom left, indigo, hotpink);
+}
+
+#registration-submission-button:hover {
+  cursor: pointer;
+  box-shadow: 12px 12px 7px black;
+}
+
+#registration-disclosure-descrip {
+  width: 20vw;
+  padding: 25px;
+  color: ghostwhite;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: hidden;
+  border-radius: 25px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(128, 0, 0, 0.8),
+    rgba(255, 99, 71, 0.4)
+  );
+}
+
+/* Styling for the Login Page */
+#login-page {
+  background-image: url("./assets/login-bg.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#login-error-message {
+  width: 17vw;
+  padding: 17px;
+  color: black;
+  border: none;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(5, 132, 14),
+    rgba(36, 235, 51),
+    rgba(41, 162, 8),
+    rgba(57, 238, 134),
+    rgba(5, 239, 41),
+    rgba(10, 214, 84)
+  );
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+#login-intro-container,
+#login-disclosure-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#login-intro-title {
+  width: 35vw;
+  padding: 25px;
+  color: ghostwhite;
+  font-size: 3.2rem;
+  border: hidden;
+  border-radius: 35px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(85, 107, 47, 0.9),
+    rgba(60, 179, 113, 0.6),
+    rgba(152, 251, 152, 0.4)
+  );
+}
+
+.login-descrip {
+  width: 23vw;
+  padding: 25px;
+  color: ghostwhite;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: hidden;
+  border-radius: 25px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(17, 63, 1, 0.8),
+    rgba(33, 128, 2, 0.5),
+    rgba(62, 224, 8, 0.3)
+  );
+}
+
+#registration-hyperlink {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#registration-hyperlink:visited {
+  color: darkgoldenrod;
+}
+
+#registration-hyperlink:link {
+  color: gold;
+}
+
+#login-disclosure-container {
+  padding-top: 15px;
+  padding-bottom: 35px;
+}
+
+#login-disclosure-descrip {
+  width: 20vw;
+  padding: 25px;
+  color: ghostwhite;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: hidden;
+  border-radius: 25px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(41, 94, 24, 0.9),
+    rgba(67, 152, 38, 0.7),
+    rgba(106, 223, 67, 0.5),
+    rgba(118, 254, 73, 0.3)
+  );
+}
+
+#login-form {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin: auto;
+  padding: 25px;
+  width: 35vw;
+  border: none;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 100, 0, 0.8),
+    rgba(50, 205, 50, 0.5),
+    rgba(144, 238, 144, 0.2)
+  );
+}
+
+#login-form-container {
+  padding-top: 40px;
+  padding-bottom: 45px;
+}
+
+.login-label {
+  padding-bottom: 15px;
+  color: ghostwhite;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.login-input {
+  border: 2px dashed mediumspringgreen;
+  height: 25px;
+  width: 15vw;
+  display: block;
+  margin-top: 7px;
+}
+
+#login-submission-button {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  height: 35px;
+  width: 15vw;
+  color: ghostwhite;
+  border: none;
+  background-image: linear-gradient(
+    to right,
+    rgba(65, 248, 223),
+    rgba(242, 65, 248),
+    rgba(252, 119, 2),
+    rgba(2, 252, 88),
+    rgba(215, 39, 107)
+  );
+}
+
+#login-submission-button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 8px 11px black;
+}
+
+/* Styling for the Single Theory Page */
+#single-theory-page {
+  background-image: url("./assets/single-theory-bg.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#single-theory,
+#single-theory-intro-container,
+#theory-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#single-theory-intro-title {
+  width: 35vw;
+  padding: 10px;
+  margin-bottom: 50px;
+  color: ghostwhite;
+  font-size: 3rem;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(101, 5, 123, 0.8),
+    rgba(190, 25, 228, 0.3)
+  );
+}
+
+#theory-title {
+  color: ghostwhite;
+  margin-top: 25px;
+  width: 25vw;
+  padding: 15px;
+  font-size: 2rem;
+  border-radius: 5px;
+  background-image: linear-gradient(
+    to bottom left,
+    rgba(68, 15, 109, 0.8),
+    rgba(176, 75, 254, 0.3)
+  );
+}
+
+#theory-descrip {
+  color: ghostwhite;
+  padding: 15px;
+  margin-bottom: 50px;
+  width: 30vw;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(109, 47, 110, 0.9),
+    rgba(240, 150, 242, 0.4)
+  );
+}
+
+#review-form-container {
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1),
+    rgba(180, 180, 180, 0.4)
+  );
+  margin-bottom: 25px;
+  border-radius: 20px;
+}
+
+#review-form {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin: auto;
+  padding: 25px;
+  width: 35vw;
+}
+
+#user-review-label {
+  padding-bottom: 15px;
+  color: ghostwhite;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+#user-review-input {
+  height: 100px;
+  width: 300px;
+  display: block;
+  margin-top: 7px;
+  font-size: 1.2rem;
+}
+
+#review-submission-button {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  height: 45px;
+  width: 15vw;
+  color: aliceblue;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: none;
+  background-image: linear-gradient(
+    to left,
+    rgba(252, 10, 10),
+    rgba(70, 114, 221),
+    rgba(162, 234, 148),
+    rgba(216, 30, 115),
+    rgba(9, 77, 102),
+    rgba(227, 227, 48),
+    rgba(87, 133, 23)
+  );
+}
+
+#review-submission-button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 8px 11px ghostwhite;
+}
