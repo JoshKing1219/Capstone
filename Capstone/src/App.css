@@ -11,6 +11,10 @@ body {
   padding: 25px;
 }
 
+.navbar-link:link {
+  color: #ffa500;
+}
+
 .navbar-link:visited {
   color: fuchsia;
 }
@@ -633,4 +637,24 @@ body {
 #review-submission-button:hover {
   cursor: pointer;
   box-shadow: 0 0 8px 11px ghostwhite;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 5px;
+}
+
+#star-rating {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#rating-total {
+  color: ghostwhite;
+  font-weight: 600;
 }

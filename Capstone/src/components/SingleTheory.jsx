@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetTheoryQuery } from "../api/index.js";
+import StarRating from "./StarRating.jsx";
 
 function SingleTheory() {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ function SingleTheory() {
   if (error) {
     message = "Failed to load the details and reviews...";
   }
+
   return (
     <section id="single-theory-page">
       <div id="single-theory-intro-container">
@@ -48,41 +50,12 @@ function SingleTheory() {
                 id="user-review-input"
               />
             </label>
+            <div id="user-rating-container"><StarRating /></div>
             <button id="review-submission-button">Submit Review</button>
-            {/* <div>
-              <div>
-                <label>Rate the Conspiracy Theory!</label>
-                <div>
-                  <div>
-                    <div>
-                      <label>
-                        <input type="radio" value="1" />
-                        <div>1</div>
-                      </label>
-                      <label>
-                        <input type="radio" value="2" />
-                        <div>2</div>
-                      </label>
-                      <label>
-                        <input type="radio" value="3" />
-                        <div>3</div>
-                      </label>
-                      <label>
-                        <input type="radio" value="4" />
-                        <div>4</div>
-                      </label>
-                      <label>
-                        <input type="radio" value="5" />
-                        <div>5</div>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </form>
         </div>
       </div>
+      
     </section>
   );
 }
