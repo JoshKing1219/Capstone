@@ -578,6 +578,15 @@ body {
   );
 }
 
+#average-score-container {
+  float: left;
+  width: 250px;
+}
+
+#average-score {
+  color: ghostwhite;
+}
+
 #review-form-container {
   background-image: linear-gradient(
     to right,
@@ -657,4 +666,41 @@ input[type="radio"] {
 #rating-total {
   color: ghostwhite;
   font-weight: 600;
+}
+
+/* Styling for the User Account Page */
+#user-account-page {
+  background-image: url("./assets/user-account-bg.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: inherit;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#account-intro-title {
+  font-size: 3rem;
+}
+
+.account-intro-descrip {
+  font-size: 1.5rem;
+}
+
+#account-details-title {
+  font-size: 2rem;
+  color: ghostwhite;
+}
+
+.user-information {
+  font-size: 1.3rem;
+  color: ghostwhite;
+}
+
+#account-details-container {
+  width: 35vw;
+  margin-bottom: 1000px;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
