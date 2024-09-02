@@ -1,16 +1,17 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useCreateReviewMutation, useGetTheoryQuery } from "../api/index.js";
+import RatingScorecard from "./RatingScorecard.jsx";
 import StarRating from "./StarRating.jsx";
 import { useState } from "react";
 
-function SingleTheory() {
+function SingleTheory({ token }) {
   const navigate = useNavigate();
 
   const { id } = useParams();
 
   const { data = {}, err, isLoading, isSuccess } = useGetTheoryQuery(id);
 
-  console.log(data);
+  // console.log(data);
 
   let message;
 
@@ -44,7 +45,7 @@ function SingleTheory() {
       return;
     }
 
-    const { data, error } = await createReview({ id, form, score });
+    const { data, error } = await createReview({ id, form, score, token });
 
     if (error) {
       setError(error);
@@ -73,32 +74,30 @@ function SingleTheory() {
               className="theory-image"
             />
             <h3 id="theory-title">{data.title}</h3>
-            <div id="average-score-container">
-              <p id="average-score">4</p>
-            </div>
             <p id="theory-descrip">{data.description}</p>
           </div>
         </div>
-        <div id="review-form-container">
-          <form id="review-form">
-            <label name="user-review-input" id="user-review-label">
-              Write a Review:
-              <textarea
-                name="user_review"
-                value={user_review}
-                onChange={handleChange}
-                placeholder="Your review here..."
-                id="user-review-input"
-              />
-            </label>
-            <div id="user-rating-container">
-              <StarRating setScore={setScore} />
-            </div>
-            <button onSubmit={handleSubmit} id="review-submission-button">
-              Submit Review
-            </button>
-          </form>
-        </div>
+        <RatingScorecard reviews={data.reviews} />
+        {token && (
+          <div id="review-form-container">
+            <form id="review-form" onSubmit={handleSubmit}>
+              <label name="user-review-input" id="user-review-label">
+                Write a Review:
+                <textarea
+                  name="user_review"
+                  value={user_review}
+                  onChange={handleChange}
+                  placeholder="Your review here..."
+                  id="user-review-input"
+                />
+              </label>
+              <div id="user-rating-container">
+                <StarRating setScore={setScore} />
+              </div>
+              <button id="review-submission-button">Submit Review</button>
+            </form>
+          </div>
+        )}
       </div>
     </section>
   );

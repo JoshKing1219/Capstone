@@ -1,9 +1,21 @@
 import { useNavigate } from "react-router";
 import { useGetTheoriesQuery } from "../api/index.js";
+import { useState } from "react";
 
 const AllTheories = () => {
   const navigate = useNavigate();
   const { data, error, isLoading, isSuccess } = useGetTheoriesQuery();
+
+  console.log(data);
+
+  const [type, setType] = useState(null);
+
+  const theoriesToDisplay =
+    type && data
+      ? data.filter((theory) => {
+          return theory.type === type;
+        })
+      : data;
 
   return (
     <section id="all-theories-page">
@@ -40,40 +52,90 @@ const AllTheories = () => {
               <button id="dropdown-button">Select a Subject:</button>
             </div>
             <div className="dropdown-content">
-              <a href="#" className="theory-type">
+              <a
+                className="theory-type"
+                onClick={() => {
+                  setType(null);
+                }}
+              >
                 All Theories (default)
               </a>
-              <a href="#" className="theory-type">
+              <a
+                className="theory-type"
+                onClick={() => {
+                  setType("Politics");
+                }}
+              >
                 Politics
               </a>
-              <a href="#" className="theory-type">
+              <a
+                className="theory-type"
+                onClick={() => {
+                  setType("Science");
+                }}
+              >
                 Science & Technology
               </a>
-              <a href="#" className="theory-type">
+              <a
+                className="theory-type"
+                onClick={() => {
+                  setType("Weather");
+                }}
+              >
                 Weather
               </a>
-              <a href="#" className="theory-type">
+              <a
+                className="theory-type"
+                onClick={() => {
+                  setType("Aliens");
+                }}
+              >
                 Aliens
               </a>
-              <a href="#" className="theory-type">
+              <a
+                className="theory-type"
+                onClick={() => {
+                  setType("Space");
+                }}
+              >
                 Space
               </a>
-              <a href="#" className="theory-type">
+              <a
+                className="theory-type"
+                onClick={() => {
+                  setType("Society");
+                }}
+              >
                 Society
               </a>
-              <a href="#" className="theory-type">
+              <a
+                className="theory-type"
+                onClick={() => {
+                  setType("Medicine");
+                }}
+              >
                 Medicine
               </a>
-              <a href="#" className="theory-type">
+              <a
+                className="theory-type"
+                onClick={() => {
+                  setType("Religion");
+                }}
+              >
                 Religion
               </a>
-              <a href="#" className="theory-type">
+              <a
+                className="theory-type"
+                onClick={() => {
+                  setType("CoverUps");
+                }}
+              >
                 Cover-Ups
               </a>
             </div>
           </div>
         </div>
-        {data?.map((theory) => (
+        {theoriesToDisplay?.map((theory) => (
           <div key={theory.id} className="theory-container">
             <div className="theory-title-container">
               <h2 className="theory-title">{theory.title}</h2>

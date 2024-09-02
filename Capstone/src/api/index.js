@@ -44,9 +44,12 @@ export const rabbitHoleApi = createApi({
     }),
 
     createReview: builder.mutation({
-      query: ({ id, form, score }) => ({
+      query: ({ id, form, score, token }) => ({
         url: `/api/theories/${id}/reviews`,
         method: "POST",
+        headers: {
+          authorization: `${token}`,
+        },
         body: {
           user_review: form.user_review,
           score: score,

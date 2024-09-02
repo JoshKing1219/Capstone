@@ -19,7 +19,7 @@ function App() {
         <Route path="/register" element={<Register setToken={setToken} />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/theories" element={<AllTheories />} />
-        <Route path="/theory/:id" element={<SingleTheory />} />
+        <Route path="/theory/:id" element={<SingleTheory token={token} />} />
         <Route path="/my-account" element={<UserAccount token={token} />} />
       </Routes>
     </div>

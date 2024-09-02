@@ -682,10 +682,16 @@ input[type="radio"] {
 
 #account-intro-title {
   font-size: 3rem;
+  color: dodgerblue;
 }
 
 .account-intro-descrip {
   font-size: 1.5rem;
+  font-weight: 600;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: cyan;
 }
 
 #account-details-title {
@@ -700,7 +706,93 @@ input[type="radio"] {
 
 #account-details-container {
   width: 35vw;
-  margin-bottom: 1000px;
+  margin-bottom: 25px;
   border-radius: 25px;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+#user-reviews-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 30vw;
+  border-radius: 15px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+#user-reviews-title,
+.user-reviews-info,
+.user-reviews-score {
+  color: ghostwhite;
+}
+
+#user-reviews-title {
+  font-size: 1.6rem;
+}
+
+.user-reviews {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border-top: 2px solid lime;
+}
+
+.user-reviews-info {
+  font-size: 1.2rem;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 0;
+  text-align: justify;
+}
+
+.user-reviews-score {
+  font-size: 1.2rem;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#scorecard {
+  width: 35vw;
+  margin-bottom: 50px;
+  color: ghostwhite;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#scorecard-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.scorecard-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.scorecard-bar {
+  width: 200px;
+  height: 18px;
+  background-color: #f1f1f159;
+}
+
+.bar-5 {
+  height: 18px;
+  background-color: #04aa6d;
+}
+.bar-4 {
+  height: 18px;
+  background-color: #2196f3;
+}
+.bar-3 {
+  height: 18px;
+  background-color: #00bcd4;
+}
+.bar-2 {
+  height: 18px;
+  background-color: #ff9800;
+}
+.bar-1 {
+  height: 18px;
+  background-color: #f44336;
 }
