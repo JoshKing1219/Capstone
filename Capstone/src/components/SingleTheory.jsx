@@ -53,7 +53,7 @@ function SingleTheory({ token }) {
     }
 
     console.log(data);
-    navigate("/theories");
+    navigate(`/theory/${id}/reviews`);
   };
 
   const { user_review } = form;
@@ -77,7 +77,17 @@ function SingleTheory({ token }) {
             <p id="theory-descrip">{data.description}</p>
           </div>
         </div>
-        <RatingScorecard reviews={data.reviews} />
+        <div>
+          <RatingScorecard reviews={data.reviews} />
+          <div>
+            <button
+              id="reviews-portal-button"
+              onClick={() => navigate(`/theory/${id}/reviews`)}
+            >
+              See All Reviews
+            </button>
+          </div>
+        </div>
         {token && (
           <div id="review-form-container">
             <form id="review-form" onSubmit={handleSubmit}>

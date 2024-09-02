@@ -1,4 +1,5 @@
 export default function RatingScorecard({ reviews }) {
+
   console.log(reviews);
   if (!reviews) {
     return <span></span>;
@@ -38,9 +39,9 @@ export default function RatingScorecard({ reviews }) {
             const currentRating = index + 1;
             return (
               <span
-                className="star"
+                className="average-star"
                 style={{
-                  color: currentRating <= average ? "#ff0000" : "#67fead",
+                  color: currentRating <= average ? "#ff9300" : "#afafb6",
                 }}
               >
                 &#9733;

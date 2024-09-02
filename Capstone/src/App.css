@@ -751,11 +751,16 @@ input[type="radio"] {
   padding-right: 15px;
 }
 
+/* Styling for the scorecard component */
+
 #scorecard {
   width: 35vw;
   margin-bottom: 50px;
   color: ghostwhite;
-  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  background-color: rgb(16, 38, 57, 0.5);
 }
 
 #scorecard-title {
@@ -778,21 +783,95 @@ input[type="radio"] {
 
 .bar-5 {
   height: 18px;
-  background-color: #04aa6d;
+  background-color: #ff0000;
 }
 .bar-4 {
   height: 18px;
-  background-color: #2196f3;
+  background-color: #ff8000;
 }
 .bar-3 {
   height: 18px;
-  background-color: #00bcd4;
+  background-color: #73ff00;
 }
 .bar-2 {
   height: 18px;
-  background-color: #ff9800;
+  background-color: #00ffea;
 }
 .bar-1 {
   height: 18px;
-  background-color: #f44336;
+  background-color: #ff00f7;
+}
+
+#reviews-portal-button {
+  margin-top: 0;
+  margin-bottom: 25px;
+  height: 30px;
+  width: 13vw;
+  color: midnightblue;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: none;
+  background-image: linear-gradient(
+    to left,
+    rgba(17, 63, 1, 0.8),
+    rgba(252, 119, 2, 0.5),
+    rgba(41, 224, 2, 0.2)
+  );
+}
+
+#reviews-portal-button:hover {
+  background-image: linear-gradient(
+    to right,
+    rgba(118, 94, 33, 0.8),
+    rgba(65, 238, 8, 0.5),
+    rgba(255, 0, 105, 0.2)
+  );
+  cursor: pointer;
+}
+
+.average-star {
+  cursor: default;
+  font-size: 2rem;
+  margin: 5px;
+}
+
+/* Styling for the Reviews page */
+#reviews-page {
+  background-image: url("./assets/reviews-page-bg.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: inherit;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#reviews-intro-title {
+  font-size: 2.5rem;
+}
+
+.reviews-card {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border-top: 3px solid lime;
+  border-left: 3px solid cyan;
+  margin-bottom: 50px;
+}
+
+.reviews-info,
+.reviews-username {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(255, 0, 0);
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: justify;
+}
+
+.reviews-info {
+  margin-top: 0;
 }

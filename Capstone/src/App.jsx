@@ -8,6 +8,7 @@ import SingleTheory from "./components/SingleTheory";
 import "./App.css";
 import { useState } from "react";
 import UserAccount from "./components/UserAccount";
+import Reviews from "./components/Reviews";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/theories" element={<AllTheories />} />
         <Route path="/theory/:id" element={<SingleTheory token={token} />} />
+        <Route path="/theory/:id/reviews" element={<Reviews token={token} />} />
         <Route path="/my-account" element={<UserAccount token={token} />} />
       </Routes>
     </div>
