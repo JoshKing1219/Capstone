@@ -1,12 +1,20 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 
 function Navbar({ token, setToken }) {
   const navigate = useNavigate();
 
+  let location = useLocation();
+  console.log(location);
+
   const logoutUser = () => {
     setToken(null);
+    localStorage.clear();
     navigate("/");
   };
+
+  if (location.pathname === "/") {
+    return <span></span>;
+  }
 
   if (token) {
     return (

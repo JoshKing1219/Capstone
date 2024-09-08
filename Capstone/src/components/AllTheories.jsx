@@ -9,13 +9,22 @@ const AllTheories = () => {
   console.log(data);
 
   const [type, setType] = useState(null);
+  const [searchParameter, setSearchParameter] = useState("");
 
-  const theoriesToDisplay =
+  const filteredTheories =
     type && data
       ? data.filter((theory) => {
           return theory.type === type;
         })
       : data;
+
+  const searchedTheories =
+    filteredTheories &&
+    filteredTheories.filter((theory) => {
+      return theory.title.toLowerCase().includes(searchParameter.toLowerCase());
+    });
+
+  const theoriesToDisplay = filteredTheories && [...searchedTheories];
 
   return (
     <section id="all-theories-page">
@@ -27,6 +36,15 @@ const AllTheories = () => {
           Please try again!
         </p>
       )}
+      <div className="searchBar">
+        <label>
+          Search:
+          <input
+            value={searchParameter}
+            onChange={(event) => setSearchParameter(event.target.value)}
+          />
+        </label>
+      </div>
       <div id="theory-library">
         <div id="library-intro-container">
           <h2 id="library-intro-title">The Library of Theories</h2>

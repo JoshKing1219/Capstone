@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../api/index.js";
 
-function Login({ setToken }) {
+function Login({ setToken, setUserId }) {
   const initialForm = {
     username: "",
     password: "",
@@ -34,6 +34,9 @@ function Login({ setToken }) {
     }
 
     setToken(data.token);
+    localStorage.setItem("token", data.token);
+    setUserId(data.user_id);
+    localStorage.setItem("userId", data.user_id);
     navigate("/theories");
   };
 

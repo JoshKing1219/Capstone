@@ -1,5 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useCreateReviewMutation, useGetTheoryQuery } from "../api/index.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import RatingScorecard from "./RatingScorecard.jsx";
 import StarRating from "./StarRating.jsx";
 import { useState } from "react";
@@ -11,7 +13,7 @@ function SingleTheory({ token }) {
 
   const { data = {}, err, isLoading, isSuccess } = useGetTheoryQuery(id);
 
-  // console.log(data);
+  console.log(data);
 
   let message;
 
@@ -60,6 +62,15 @@ function SingleTheory({ token }) {
 
   return (
     <section id="single-theory-page">
+      <div id="return-container">
+        <FontAwesomeIcon
+          icon={faArrowRightToBracket}
+          rotation={180}
+          style={{ color: "#f7f7f7" }}
+          id="return-button"
+          onClick={() => navigate("/theories")}
+        />
+      </div>
       <div id="single-theory-intro-container">
         <h2 id="single-theory-intro-title">Your Chosen Conspiracy Theory</h2>
       </div>

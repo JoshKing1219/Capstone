@@ -848,11 +848,44 @@ input[type="radio"] {
 }
 
 #reviews-intro-title {
+  margin-top: 0;
   font-size: 2.5rem;
 }
 
+#return-container {
+  margin-right: 100%;
+}
+
+#return-button {
+  font-size: 3rem;
+  position: fixed;
+  margin-top: 7px;
+  margin-left: 13px;
+}
+
+#return-button:hover {
+  cursor: pointer;
+}
+
+#secret-button-container {
+  margin-left: 90%;
+}
+
+#secret-button-1 {
+  margin-top: 5px;
+  font-size: 1.5rem;
+}
+
+#secret-button-1:hover {
+  cursor: pointer;
+}
+
+#review-cards-container {
+  width: 80%;
+}
+
 .reviews-card {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: black;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -860,6 +893,7 @@ input[type="radio"] {
   border-top: 3px solid lime;
   border-left: 3px solid cyan;
   margin-bottom: 50px;
+  width: 100%;
 }
 
 .reviews-info,
@@ -867,11 +901,51 @@ input[type="radio"] {
   font-size: 1.2rem;
   font-weight: 600;
   color: rgb(255, 0, 0);
-  padding-left: 15px;
-  padding-right: 15px;
   text-align: justify;
 }
 
 .reviews-info {
   margin-top: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.reviews-username {
+  padding-left: 5px;
+}
+
+.reply-container {
+  margin-left: 95%;
+}
+
+.edit-container {
+  margin-left: 95%;
+}
+
+.edit-button {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.edit-button:hover {
+  cursor: pointer;
+}
+
+.reply-button {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.reply-button:hover {
+  cursor: pointer;
+}
+
+.user-icon {
+  font-size: 1.5rem;
+  margin-left: 10px;
+  margin-top: 18px;
+}
+
+.user-container {
+  display: flex;
 }

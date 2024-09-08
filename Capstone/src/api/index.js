@@ -57,9 +57,23 @@ export const rabbitHoleApi = createApi({
       }),
     }),
     updateReview: builder.mutation({
-      query: ({ theory_id, id }) => ({
-        url: `/api/theories/${theory_id}/reviews/${id}`,
+      query: ({ id, body, token }) => ({
+        url: `/api/theories/reviews/${id}`,
         method: "PUT",
+        headers: {
+          authorization: `${token}`,
+        },
+        body,
+      }),
+    }),
+
+    createComment: builder.mutation({
+      query: ({ id, body, token }) => ({
+        url: `/api/reviews/${id}/comments`,
+        method: "POST",
+        headers: {
+          authorization: `${token}`,
+        },
         body,
       }),
     }),
@@ -73,4 +87,5 @@ export const {
   useLoginMutation,
   useGetUserQuery,
   useCreateReviewMutation,
+  useCreateCommentMutation,
 } = rabbitHoleApi;
