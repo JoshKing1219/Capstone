@@ -37,11 +37,12 @@ const AllTheories = () => {
         </p>
       )}
       <div className="searchBar">
-        <label>
+        <label id="searchBar-label">
           Search:
           <input
             value={searchParameter}
             onChange={(event) => setSearchParameter(event.target.value)}
+            id="searchBar-input"
           />
         </label>
       </div>

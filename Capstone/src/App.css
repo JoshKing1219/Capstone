@@ -23,6 +23,21 @@ body {
   color: lime;
 }
 
+#return-container {
+  margin-right: 100%;
+}
+
+#return-button {
+  font-size: 3rem;
+  position: fixed;
+  margin-top: 7px;
+  margin-left: 13px;
+}
+
+#return-button:hover {
+  cursor: pointer;
+}
+
 /* Home Page Styling */
 #home-page {
   background-image: url("./assets/home-page-bg.jpg");
@@ -124,12 +139,30 @@ body {
 }
 
 /* All Theories Page Styling */
-
 #all-theories-page {
   background-image: url("./assets/all-theories-bg.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 15px;
+  padding-right: 35px;
+  margin-left: 50%;
+}
+
+#searchBar-label {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: ghostwhite;
+  position: fixed;
+}
+
+#searchBar-input {
+  margin-left: 7px;
 }
 
 #theory-library,
@@ -711,7 +744,8 @@ input[type="radio"] {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-#user-reviews-container {
+#user-reviews-container,
+#user-comments-container {
   background-color: rgba(0, 0, 0, 0.5);
   width: 30vw;
   border-radius: 15px;
@@ -721,15 +755,19 @@ input[type="radio"] {
 
 #user-reviews-title,
 .user-reviews-info,
-.user-reviews-score {
+.user-reviews-score,
+#user-comments-title,
+.user-comments-info {
   color: ghostwhite;
 }
 
-#user-reviews-title {
+#user-reviews-title,
+#user-comments-title {
   font-size: 1.6rem;
 }
 
-.user-reviews {
+.user-reviews,
+.user-comments {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -737,7 +775,8 @@ input[type="radio"] {
   border-top: 2px solid lime;
 }
 
-.user-reviews-info {
+.user-reviews-info,
+.user-comments-info {
   font-size: 1.2rem;
   padding-left: 15px;
   padding-right: 15px;
@@ -850,21 +889,6 @@ input[type="radio"] {
 #reviews-intro-title {
   margin-top: 0;
   font-size: 2.5rem;
-}
-
-#return-container {
-  margin-right: 100%;
-}
-
-#return-button {
-  font-size: 3rem;
-  position: fixed;
-  margin-top: 7px;
-  margin-left: 13px;
-}
-
-#return-button:hover {
-  cursor: pointer;
 }
 
 #secret-button-container {

@@ -47,9 +47,27 @@ function UserAccount({ token }) {
               Theory: {userReview.theory.title}
             </p>
             <p className="user-reviews-info">
-              Feedback: {userReview.user_review}
+              My Review: {userReview.user_review}
             </p>
             <p className="user-reviews-score">Score: {userReview.score}/5</p>
+          </div>
+        ))}
+      </div>
+      <div id="user-comments-container">
+        <div id="user-comments-intro">
+          <h3 id="user-comments-title">My Comments</h3>
+        </div>
+        {data?.comments?.map((userComment) => (
+          <div className="user-comments" key={userComment.id}>
+            <p className="user-comments-info">
+              Theory: {userComment.review.theory.title}
+            </p>
+            <p className="user-comments-info">
+              Original Review: {userComment.review.user_review}
+            </p>
+            <p className="user-comments-info">
+              My Comment: {userComment.comment}
+            </p>
           </div>
         ))}
       </div>
