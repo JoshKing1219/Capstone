@@ -65,7 +65,7 @@ function UserAccount({ token }) {
             <p className="user-comments-info">
               Original Review: {userComment.review.user_review}
             </p>
-            <p className="user-comments-info">
+            <p className="user-comment-info">
               My Comment: {userComment.comment}
             </p>
           </div>

@@ -757,7 +757,8 @@ input[type="radio"] {
 .user-reviews-info,
 .user-reviews-score,
 #user-comments-title,
-.user-comments-info {
+.user-comments-info,
+.user-comment-info {
   color: ghostwhite;
 }
 
@@ -776,7 +777,8 @@ input[type="radio"] {
 }
 
 .user-reviews-info,
-.user-comments-info {
+.user-comments-info,
+.user-comment-info {
   font-size: 1.2rem;
   padding-left: 15px;
   padding-right: 15px;
@@ -790,8 +792,11 @@ input[type="radio"] {
   padding-right: 15px;
 }
 
-/* Styling for the scorecard component */
+.user-comment-info {
+  padding-bottom: 15px;
+}
 
+/* Styling for the scorecard component */
 #scorecard {
   width: 35vw;
   margin-bottom: 50px;
@@ -914,9 +919,8 @@ input[type="radio"] {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: flex-start;
-  border-top: 3px solid lime;
-  border-left: 3px solid cyan;
-  margin-bottom: 50px;
+  border-top: 5px solid lime;
+  border-left: 5px solid cyan;
   width: 100%;
 }
 
@@ -928,17 +932,19 @@ input[type="radio"] {
   text-align: justify;
 }
 
-.reviews-info {
+.reviews-info,
+.comments-info {
   margin-top: 0;
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.reviews-username {
+.reviews-username,
+.comments-username {
   padding-left: 5px;
 }
 
-.reply-container {
+.comment-container {
   margin-left: 95%;
 }
 
@@ -955,11 +961,13 @@ input[type="radio"] {
   cursor: pointer;
 }
 
+.comment-button,
 .reply-button {
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
+.comment-button:hover,
 .reply-button:hover {
   cursor: pointer;
 }
@@ -972,4 +980,35 @@ input[type="radio"] {
 
 .user-container {
   display: flex;
+}
+
+.comments-card {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border-top: 5px solid orchid;
+  border-left: 5px solid red;
+  width: 50%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 10%;
+}
+
+.comment-form-container {
+  justify-content: flex-end;
+  margin-left: 75%;
+}
+
+.comments-info,
+.comments-username {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: blue;
+  text-align: justify;
+}
+
+.reply-container {
+  margin-left: 92%;
 }

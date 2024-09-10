@@ -77,6 +77,17 @@ export const rabbitHoleApi = createApi({
         body,
       }),
     }),
+
+    createReply: builder.mutation({
+      query: ({ id, body, token }) => ({
+        url: `/api/comment/${id}/replies`,
+        method: "POST",
+        headers: {
+          authorization: `${token}`,
+        },
+        body,
+      }),
+    }),
   }),
 });
 
@@ -88,4 +99,5 @@ export const {
   useGetUserQuery,
   useCreateReviewMutation,
   useCreateCommentMutation,
+  useCreateReplyMutation,
 } = rabbitHoleApi;
