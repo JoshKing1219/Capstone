@@ -7,13 +7,14 @@ export const rabbitHoleApi = createApi({
     baseUrl: "http://localhost:8080",
   }),
 
-  tagTypes: ["User"],
+  tagTypes: ["User", "reviews", "comments", "replies"],
   endpoints: (builder) => ({
     getTheories: builder.query({
       query: () => "/api/theories",
     }),
     getTheory: builder.query({
       query: (id) => `/api/theories/${id}`,
+      providesTags: ["reviews", "comments", "replies"],
     }),
 
     register: builder.mutation({
@@ -55,6 +56,7 @@ export const rabbitHoleApi = createApi({
           score: score,
         },
       }),
+      invalidatesTags: ["reviews"],
     }),
     updateReview: builder.mutation({
       query: ({ id, body, token }) => ({
@@ -76,17 +78,19 @@ export const rabbitHoleApi = createApi({
         },
         body,
       }),
+      invalidatesTags: ["comments"],
     }),
 
     createReply: builder.mutation({
       query: ({ id, body, token }) => ({
-        url: `/api/comment/${id}/replies`,
+        url: `/api/comments/${id}/replies`,
         method: "POST",
         headers: {
           authorization: `${token}`,
         },
         body,
       }),
+      invalidatesTags: ["replies"],
     }),
   }),
 });

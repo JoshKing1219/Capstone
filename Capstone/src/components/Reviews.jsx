@@ -14,6 +14,7 @@ import {
   faArrowRightToBracket,
   faUserSecret,
   faArrowsTurnRight,
+  faGhost,
 } from "@fortawesome/free-solid-svg-icons";
 
 function Reviews({ token, userId }) {
@@ -68,12 +69,10 @@ function Reviews({ token, userId }) {
   };
 
   const [showReplyForm, updateShowReplyForm] = useState(false);
-  const [currentCommentIndex, updateCurrentCommentIndex] = useState(null);
   const [currentCommentId, updateCurrentCommentId] = useState(null);
 
-  const handleReplyClick = (index, commentId) => {
+  const handleReplyClick = (commentId) => {
     updateShowReplyForm(!showReplyForm);
-    updateCurrentCommentIndex(index);
     updateCurrentCommentId(commentId);
   };
 
@@ -99,6 +98,7 @@ function Reviews({ token, userId }) {
           onClick={() => navigate(`/theory/${data.id}`)}
         />
       </div>
+
       <div id="secret-button-container">
         <FontAwesomeIcon
           icon={faSpaghettiMonsterFlying}
@@ -106,6 +106,7 @@ function Reviews({ token, userId }) {
           id="secret-button-1"
         />
       </div>
+
       <div id="reviews-intro-container">
         <h2 id="reviews-intro-title">
           All Reviews For <br />
@@ -174,6 +175,7 @@ function Reviews({ token, userId }) {
                 </div>
               )}
             </div>
+
             <div
               className="comment-form-container"
               style={{
@@ -196,57 +198,87 @@ function Reviews({ token, userId }) {
 
             <div className="comment-cards-container">
               {review.comments.length > 0 ? (
-                review?.comments?.map((review_comment, index) => (
-                  <article className="comments-card-box">
-                    <div className="comments-card" key={review_comment.id}>
-                      <div className="user-container">
-                        <FontAwesomeIcon
-                          icon={faUserSecret}
-                          style={{ color: "#1100ff" }}
-                          className="user-icon"
-                        />
-                        <p className="comments-username">
-                          {review_comment.author?.username}
-                        </p>
-                      </div>
-                      <p className="comments-info">{review_comment.comment}</p>
-                      <div className="reply-container">
-                        <FontAwesomeIcon
-                          icon={faArrowsTurnRight}
-                          flip="vertical"
-                          style={{ color: "#ff7b00" }}
-                          className="reply-button"
-                          onClick={() =>
-                            handleReplyClick(index, review_comment.id)
-                          }
-                        />
-                      </div>
-                    </div>
-                    <div
-                      className="reply-form-container"
-                      style={{
-                        display:
-                          showReplyForm && currentCommentIndex === index
-                            ? "block"
-                            : "none",
-                      }}
-                    >
-                      <form onSubmit={handleReplySubmit}>
-                        <label>
-                          <input
-                            name="reply"
-                            value={reply}
-                            placeholder="Your reply here..."
-                            onChange={(evnt) => setReply(evnt.target.value)}
+                review?.comments?.map((review_comment) => (
+                  <div className="comments-container">
+                    <article className="comments-card-box">
+                      <div className="comments-card" key={review_comment.id}>
+                        <div className="user-container">
+                          <FontAwesomeIcon
+                            icon={faUserSecret}
+                            style={{ color: "#1100ff" }}
+                            className="user-icon"
                           />
-                        </label>
-                        <button>Submit</button>
-                      </form>
+                          <p className="comments-username">
+                            {review_comment.author?.username}
+                          </p>
+                        </div>
+                        <p className="comments-info">
+                          {review_comment.comment}
+                        </p>
+                        {token && (
+                          <div className="reply-container">
+                            <FontAwesomeIcon
+                              icon={faArrowsTurnRight}
+                              flip="vertical"
+                              style={{ color: "#ff7b00" }}
+                              className="reply-button"
+                              onClick={() =>
+                                handleReplyClick(review_comment.id)
+                              }
+                            />
+                          </div>
+                        )}
+                      </div>
+                      <div
+                        className="reply-form-container"
+                        style={{
+                          display:
+                            showReplyForm &&
+                            currentCommentId === review_comment.id
+                              ? "block"
+                              : "none",
+                        }}
+                      >
+                        <form onSubmit={handleReplySubmit}>
+                          <label>
+                            <input
+                              name="reply"
+                              value={reply}
+                              placeholder="Your reply here..."
+                              onChange={(evnt) => setReply(evnt.target.value)}
+                            />
+                          </label>
+                          <button>Submit</button>
+                        </form>
+                      </div>
+                    </article>
+                    <div id="reply-cards-container">
+                      {review_comment.replies.length > 0 ? (
+                        review_comment.replies?.map((comment_reply) => (
+                          <div className="replies-card" key={comment_reply.id}>
+                            <div className="user-container">
+                              <FontAwesomeIcon
+                                icon={faGhost}
+                                style={{ color: "#7fff00" }}
+                                className="user-icon"
+                              />
+                              <p className="replies-username">
+                                {comment_reply.replier?.username}
+                              </p>
+                            </div>
+                            <p className="replies-info">
+                              {comment_reply.reply}
+                            </p>
+                          </div>
+                        ))
+                      ) : (
+                        <p className="replies-fireback">No replies</p>
+                      )}
                     </div>
-                  </article>
+                  </div>
                 ))
               ) : (
-                <p>No comments</p>
+                <p className="comments-fireback">No comments</p>
               )}
             </div>
           </section>

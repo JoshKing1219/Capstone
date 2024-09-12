@@ -32,10 +32,18 @@ function UserAccount({ token }) {
       </div>
       <div id="account-details-container" key={data.id}>
         <h3 id="account-details-title">My Information</h3>
-        <p className="user-information">Username: {data.username}</p>
-        <p className="user-information">First Name: {data.first_name}</p>
-        <p className="user-information">Last Name: {data.last_name}</p>
-        <p className="user-information">Email: {data.email}</p>
+        <p className="user-information">
+          <strong>Username:</strong> {data.username}
+        </p>
+        <p className="user-information">
+          <strong>First Name:</strong> {data.first_name}
+        </p>
+        <p className="user-information">
+          <strong>Last Name:</strong> {data.last_name}
+        </p>
+        <p className="user-information">
+          <strong>Email:</strong> {data.email}
+        </p>
       </div>
       <div id="user-reviews-container">
         <div id="user-reviews-intro">
@@ -44,12 +52,14 @@ function UserAccount({ token }) {
         {data?.reviews?.map((userReview) => (
           <div className="user-reviews" key={userReview.id}>
             <p className="user-reviews-info">
-              Theory: {userReview.theory.title}
+              <strong>Theory:</strong> {userReview.theory.title}
             </p>
             <p className="user-reviews-info">
-              My Review: {userReview.user_review}
+              <strong>My Review:</strong> {userReview.user_review}
             </p>
-            <p className="user-reviews-score">Score: {userReview.score}/5</p>
+            <p className="user-reviews-score">
+              <strong>Score:</strong> {userReview.score}/5
+            </p>
           </div>
         ))}
       </div>
@@ -60,13 +70,13 @@ function UserAccount({ token }) {
         {data?.comments?.map((userComment) => (
           <div className="user-comments" key={userComment.id}>
             <p className="user-comments-info">
-              Theory: {userComment.review.theory.title}
+              <strong>Theory:</strong> {userComment.review.theory.title}
             </p>
             <p className="user-comments-info">
-              Original Review: {userComment.review.user_review}
+              <strong>Original Review:</strong> {userComment.review.user_review}
             </p>
             <p className="user-comment-info">
-              My Comment: {userComment.comment}
+              <strong>My Comment:</strong> {userComment.comment}
             </p>
           </div>
         ))}
