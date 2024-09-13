@@ -2,6 +2,7 @@ import {
   useGetTheoryQuery,
   useCreateCommentMutation,
   useCreateReplyMutation,
+  useDeleteCommentMutation,
 } from "../api/index.js";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -15,6 +16,7 @@ import {
   faUserSecret,
   faArrowsTurnRight,
   faGhost,
+  faSkullCrossbones,
 } from "@fortawesome/free-solid-svg-icons";
 
 function Reviews({ token, userId }) {
@@ -23,8 +25,6 @@ function Reviews({ token, userId }) {
   const { id } = useParams();
 
   const { data = {}, err, isLoading, isSuccess } = useGetTheoryQuery(id);
-
-  console.log(data);
 
   let message;
 
@@ -46,6 +46,7 @@ function Reviews({ token, userId }) {
   };
 
   const [newUserReview, setNewUserReview] = useState("");
+  const [newUserComment, setNewUserComment] = useState("");
 
   const [showCommentForm, updateShowCommentForm] = useState(false);
   const [currentIndex, updateCurrentIndex] = useState(null);
@@ -87,6 +88,22 @@ function Reviews({ token, userId }) {
     updateShowReplyForm(false);
   };
 
+  const [showCommentUpdateForm, updateShowCommentUpdateForm] = useState(false);
+
+  const handleEditCommentClick = (commentId) => {
+    updateShowCommentUpdateForm(!showCommentUpdateForm);
+    updateCurrentCommentId(commentId);
+  };
+
+  const [deleteComment] = useDeleteCommentMutation();
+
+  const handleDeleteCommentClick = async (commentId) => {
+    console.log(commentId);
+    updateCurrentCommentId(commentId);
+    console.log(updateCurrentCommentId());
+    await deleteComment({ id: currentCommentId, token });
+  };
+
   return (
     <section id="reviews-page">
       <div id="return-container">
@@ -116,7 +133,7 @@ function Reviews({ token, userId }) {
       <div key={data.id} className="theory-card">
         <div id="theory-details-container">
           <img src={data.image_url} alt={data.title} className="theory-image" />
-          <h3 id="theory-title">{data.title}</h3>
+          <h3 id="theory-title-2">{data.title}</h3>
         </div>
       </div>
 
@@ -127,53 +144,67 @@ function Reviews({ token, userId }) {
           <section>
             <div className="reviews-card" key={review.id}>
               {token && (
-                <div className="edit-container">
-                  <FontAwesomeIcon
-                    icon={faMagicWandSparkles}
-                    style={{
-                      color: "#00ffbf",
-                      display: review.user_id === userId ? "block" : "none",
-                    }}
-                    className="edit-button"
-                    onClick={() => handleEditClick(index, review.id)}
-                  />
-                </div>
-              )}
-              <div className="user-container">
-                <FontAwesomeIcon
-                  icon={faStreetView}
-                  style={{ color: "#ff0000" }}
-                  className="user-icon"
-                />
-                <p className="reviews-username">{review.user.username}</p>
-              </div>
-              {showReviewUpdateForm && currentReviewIndex === index ? (
-                <div>
-                  <form onSubmit={handleSubmit}>
-                    <label>
-                      <input
-                        name="user_review"
-                        value={newUserReview}
-                        placeholder={review.user_review}
-                        onChange={(evnt) => setNewUserReview(evnt.target.value)}
-                      />
-                    </label>
-                    <button>Submit</button>
-                  </form>
-                </div>
-              ) : (
-                <p className="reviews-info">{review.user_review}</p>
-              )}
-              {token && (
-                <div className="comment-container">
+                <div className="edit-delete-container">
                   <FontAwesomeIcon
                     icon={faArrowTrendDown}
                     style={{ color: "#FFD43B" }}
                     className="comment-button"
                     onClick={() => handleClick(index, review.id)}
                   />
+                  <div className="edit-delete-box">
+                    <FontAwesomeIcon
+                      icon={faMagicWandSparkles}
+                      style={{
+                        color: "firebrick",
+                        display: review.user_id === userId ? "block" : "none",
+                      }}
+                      className="edit-button"
+                      onClick={() => handleEditClick(index, review.id)}
+                    />
+                    <FontAwesomeIcon
+                      icon={faSkullCrossbones}
+                      style={{
+                        color: "#ff8800",
+                        display: review.user_id === userId ? "block" : "none",
+                      }}
+                      className="delete-button"
+                    />
+                  </div>
                 </div>
               )}
+              <div className="user-container">
+                <div className="user-box">
+                  <FontAwesomeIcon
+                    icon={faStreetView}
+                    style={{ color: "#ff0000" }}
+                    className="user-icon"
+                  />
+                  <p className="reviews-username">{review.user.username}</p>
+                </div>
+
+                {showReviewUpdateForm && currentReviewIndex === index ? (
+                  <div className="edit-review-container">
+                    <form onSubmit={handleSubmit} className="edit-review-form">
+                      <label className="edit-review-label">
+                        <input
+                          name="user_review"
+                          value={newUserReview}
+                          placeholder={review.user_review}
+                          onChange={(evnt) =>
+                            setNewUserReview(evnt.target.value)
+                          }
+                          className="edit-review-input"
+                        />
+                      </label>
+                      <button className="edit-review-submit-button">
+                        Submit
+                      </button>
+                    </form>
+                  </div>
+                ) : (
+                  <p className="reviews-info">{review.user_review}</p>
+                )}
+              </div>
             </div>
 
             <div
@@ -183,16 +214,17 @@ function Reviews({ token, userId }) {
                   showCommentForm && currentIndex === index ? "block" : "none",
               }}
             >
-              <form onSubmit={handleSubmit}>
-                <label>
+              <form onSubmit={handleSubmit} className="comment-form">
+                <label className="comment-form-label">
                   <input
                     name="comment"
                     value={comment}
                     placeholder="Your comment here..."
                     onChange={(evnt) => setComment(evnt.target.value)}
+                    className="comment-form-input"
                   />
                 </label>
-                <button>Submit</button>
+                <button className="comment-form-submit-button">Submit</button>
               </form>
             </div>
 
@@ -202,21 +234,8 @@ function Reviews({ token, userId }) {
                   <div className="comments-container">
                     <article className="comments-card-box">
                       <div className="comments-card" key={review_comment.id}>
-                        <div className="user-container">
-                          <FontAwesomeIcon
-                            icon={faUserSecret}
-                            style={{ color: "#1100ff" }}
-                            className="user-icon"
-                          />
-                          <p className="comments-username">
-                            {review_comment.author?.username}
-                          </p>
-                        </div>
-                        <p className="comments-info">
-                          {review_comment.comment}
-                        </p>
                         {token && (
-                          <div className="reply-container">
+                          <div className="edit-delete-container-2">
                             <FontAwesomeIcon
                               icon={faArrowsTurnRight}
                               flip="vertical"
@@ -226,8 +245,76 @@ function Reviews({ token, userId }) {
                                 handleReplyClick(review_comment.id)
                               }
                             />
+                            <div className="edit-delete-box-2">
+                              <FontAwesomeIcon
+                                icon={faMagicWandSparkles}
+                                style={{
+                                  color: "firebrick",
+                                  display:
+                                    review_comment.author_id === userId
+                                      ? "block"
+                                      : "none",
+                                }}
+                                className="edit-button"
+                                onClick={() =>
+                                  handleEditCommentClick(review_comment.id)
+                                }
+                              />
+                              <FontAwesomeIcon
+                                icon={faSkullCrossbones}
+                                style={{
+                                  color: "#ff8800",
+                                  display:
+                                    review_comment.author_id === userId
+                                      ? "block"
+                                      : "none",
+                                }}
+                                className="delete-button"
+                                onClick={() =>
+                                  handleDeleteCommentClick(review_comment.id)
+                                }
+                              />
+                            </div>
                           </div>
                         )}
+                        <div className="user-container">
+                          <div className="user-box">
+                            <FontAwesomeIcon
+                              icon={faUserSecret}
+                              style={{ color: "#1100ff" }}
+                              className="user-icon"
+                            />
+                            <p className="comments-username">
+                              {review_comment.author?.username}
+                            </p>
+                          </div>
+
+                          {showCommentUpdateForm &&
+                          currentCommentId === review_comment.id ? (
+                            <div className="edit-comment-container">
+                              <form className="edit-comment-form">
+                                <label className="edit-comment-label">
+                                  <input
+                                    name="user_review"
+                                    value={newUserComment}
+                                    placeholder={review_comment.comment}
+                                    onChange={(evnt) =>
+                                      setNewUserComment(evnt.target.value)
+                                    }
+                                    className="edit-comment-input"
+                                  />
+                                </label>
+                                <button className="edit-comment-submit-button">
+                                  Submit
+                                </button>
+                              </form>
+                            </div>
+                          ) : (
+                            <p className="comments-info">
+                              {review_comment.comment}
+                            </p>
+                          )}
+                        </div>
                       </div>
                       <div
                         className="reply-form-container"
@@ -239,16 +326,22 @@ function Reviews({ token, userId }) {
                               : "none",
                         }}
                       >
-                        <form onSubmit={handleReplySubmit}>
-                          <label>
+                        <form
+                          onSubmit={handleReplySubmit}
+                          className="reply-form"
+                        >
+                          <label className="reply-label">
                             <input
                               name="reply"
                               value={reply}
                               placeholder="Your reply here..."
                               onChange={(evnt) => setReply(evnt.target.value)}
+                              className="reply-input"
                             />
                           </label>
-                          <button>Submit</button>
+                          <button className="reply-submit-button">
+                            Submit
+                          </button>
                         </form>
                       </div>
                     </article>
@@ -256,29 +349,71 @@ function Reviews({ token, userId }) {
                       {review_comment.replies.length > 0 ? (
                         review_comment.replies?.map((comment_reply) => (
                           <div className="replies-card" key={comment_reply.id}>
+                            {token && (
+                              <div className="edit-delete-container-3">
+                                <div className="edit-delete-box-3">
+                                  <FontAwesomeIcon
+                                    icon={faMagicWandSparkles}
+                                    style={{
+                                      color: "firebrick",
+                                      display:
+                                        comment_reply.replier_id === userId
+                                          ? "block"
+                                          : "none",
+                                    }}
+                                    className="edit-button"
+                                    onClick={() =>
+                                      handleEditClick(index, review.id)
+                                    }
+                                  />
+                                  <FontAwesomeIcon
+                                    icon={faSkullCrossbones}
+                                    style={{
+                                      color: "#ff8800",
+                                      display:
+                                        comment_reply.replier_id === userId
+                                          ? "block"
+                                          : "none",
+                                    }}
+                                    className="delete-button"
+                                  />
+                                </div>
+                              </div>
+                            )}
                             <div className="user-container">
-                              <FontAwesomeIcon
-                                icon={faGhost}
-                                style={{ color: "#7fff00" }}
-                                className="user-icon"
-                              />
-                              <p className="replies-username">
-                                {comment_reply.replier?.username}
+                              <div className="user-box">
+                                <FontAwesomeIcon
+                                  icon={faGhost}
+                                  style={{ color: "#7fff00" }}
+                                  className="user-icon"
+                                />
+                                <p className="replies-username">
+                                  {comment_reply.replier?.username}
+                                </p>
+                              </div>
+
+                              <p className="replies-info">
+                                {comment_reply.reply}
                               </p>
                             </div>
-                            <p className="replies-info">
-                              {comment_reply.reply}
-                            </p>
                           </div>
                         ))
                       ) : (
-                        <p className="replies-fireback">No replies</p>
+                        <div className="replies-fireback-container">
+                          <div className="replies-fireback-sidebar-l"></div>
+                          <p className="replies-fireback">No replies</p>
+                          <div className="replies-fireback-sidebar-r"></div>
+                        </div>
                       )}
                     </div>
                   </div>
                 ))
               ) : (
-                <p className="comments-fireback">No comments</p>
+                <div className="comments-fireback-container">
+                  <div className="comments-fireback-sidebar-l"></div>
+                  <p className="comments-fireback">No comments</p>
+                  <div className="comments-fireback-sidebar-r"></div>
+                </div>
               )}
             </div>
           </section>

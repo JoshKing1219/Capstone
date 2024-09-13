@@ -554,7 +554,7 @@ body {
 
 /* Styling for the Single Theory Page */
 #single-theory-page {
-  background-image: url("./assets/single-theory-bg.jpeg");
+  background-image: url("./assets/single-theory-page-bg.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -703,7 +703,7 @@ input[type="radio"] {
 
 /* Styling for the User Account Page */
 #user-account-page {
-  background-image: url("./assets/user-account-bg.jpeg");
+  background-image: url("./assets/user-account-bg.jpg");
   background-repeat: no-repeat;
   background-attachment: inherit;
   background-size: cover;
@@ -715,7 +715,7 @@ input[type="radio"] {
 
 #account-intro-title {
   font-size: 3rem;
-  color: dodgerblue;
+  color: turquoise;
 }
 
 .account-intro-descrip {
@@ -881,19 +881,33 @@ input[type="radio"] {
 
 /* Styling for the Reviews page */
 #reviews-page {
-  background-image: url("./assets/reviews-page-bg.jpeg");
+  background-image: url("./assets/Reviews-Page-BG.jpg");
   background-repeat: no-repeat;
   background-attachment: inherit;
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
 }
 
 #reviews-intro-title {
   margin-top: 0;
   font-size: 2.5rem;
+  text-align: center;
+}
+
+#theory-title-2 {
+  color: ghostwhite;
+  margin-top: 25px;
+  width: 25vw;
+  padding: 15px;
+  font-size: 2rem;
+  border-radius: 5px;
+  background-image: linear-gradient(
+    to bottom left,
+    rgba(109, 43, 15, 0.8),
+    rgba(200, 254, 75, 0.3)
+  );
 }
 
 #secret-button-container {
@@ -916,7 +930,7 @@ input[type="radio"] {
 .reviews-card {
   background-color: black;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
   align-items: flex-start;
   border-top: 5px solid lime;
@@ -950,16 +964,51 @@ input[type="radio"] {
   margin-left: 95%;
 }
 
-.edit-container {
-  margin-left: 95%;
+.edit-delete-container {
+  display: flex;
+  width: 15%;
+  flex-direction: column-reverse;
+  align-items: center;
 }
 
-.edit-button {
+.edit-delete-box {
+  display: flex;
+}
+
+.edit-delete-container-2 {
+  display: flex;
+  width: 15%;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.edit-delete-box-2 {
+  display: flex;
+}
+
+.edit-delete-container-3 {
+  display: flex;
+  width: 15%;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.edit-delete-box-3 {
+  display: flex;
+}
+
+.delete-button {
+  padding-left: 25px;
+}
+
+.edit-button,
+.delete-button {
   font-size: 1.5rem;
   margin-top: 10px;
 }
 
-.edit-button:hover {
+.edit-button:hover,
+.delete-button:hover {
   cursor: pointer;
 }
 
@@ -982,12 +1031,22 @@ input[type="radio"] {
 
 .user-container {
   display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+
+.user-box {
+  display: flex;
+}
+
+.comment-button {
+  margin-top: 35px;
 }
 
 .comments-card {
   background-color: white;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
   align-items: flex-start;
   border-top: 5px solid orchid;
@@ -998,11 +1057,6 @@ input[type="radio"] {
   margin-left: 10%;
 }
 
-.comment-form-container {
-  justify-content: flex-end;
-  margin-left: 75%;
-}
-
 .comments-info,
 .comments-username {
   font-size: 1.2rem;
@@ -1011,14 +1065,10 @@ input[type="radio"] {
   text-align: justify;
 }
 
-.reply-container {
-  margin-left: 92%;
-}
-
 .replies-card {
   background-color: gray;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
   align-items: flex-start;
   border-top: 5px solid gold;
@@ -1035,4 +1085,123 @@ input[type="radio"] {
   font-weight: 600;
   color: chartreuse;
   text-align: justify;
+}
+
+.reply-button {
+  margin-top: 35px;
+}
+
+.replies-fireback-container {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+
+.comments-fireback-container {
+  display: flex;
+  width: 45%;
+  justify-content: flex-start;
+  margin-top: 15px;
+  margin-left: 5%;
+}
+
+.replies-fireback-sidebar-l,
+.comments-fireback-sidebar-l {
+  width: 10%;
+  height: 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 25px;
+}
+
+.replies-fireback-sidebar-r,
+.comments-fireback-sidebar-r {
+  width: 10%;
+  height: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 25px;
+}
+
+.replies-fireback,
+.comments-fireback {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+.edit-review-input {
+  width: 75%;
+  height: 25px;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+.edit-review-submit-button {
+  width: 10%;
+  font-size: 1rem;
+  height: 30px;
+  color: ghostwhite;
+  background-color: darkslateblue;
+}
+
+.edit-comment-input {
+  width: 50%;
+  height: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 0.75rem;
+}
+
+.edit-comment-submit-button {
+  width: 20%;
+  font-size: 0.75rem;
+  height: 25px;
+  color: ghostwhite;
+  background-color: cadetblue;
+  border: none;
+}
+
+.reply-input {
+  width: 35%;
+  height: 25px;
+  margin-right: 10px;
+  margin-left: 15%;
+  margin-bottom: 10px;
+  padding: 3px;
+  font-size: 1rem;
+  border: 4px dotted yellowgreen;
+}
+
+.reply-submit-button {
+  width: 10%;
+  font-size: 1rem;
+  height: 30px;
+  color: ghostwhite;
+  background-color: coral;
+  border: 2px solid antiquewhite;
+}
+
+.comment-form-input {
+  width: 45%;
+  height: 25px;
+  margin-right: 10px;
+  margin-left: 5%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 3px;
+  font-size: 1rem;
+  border: 3px dashed maroon;
+}
+
+.comment-form-submit-button {
+  width: 10%;
+  font-size: 1rem;
+  height: 30px;
+  color: ghostwhite;
+  background-color: indianred;
+  border: 3px dotted antiquewhite;
 }

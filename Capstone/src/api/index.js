@@ -80,6 +80,16 @@ export const rabbitHoleApi = createApi({
       }),
       invalidatesTags: ["comments"],
     }),
+    deleteComment: builder.mutation({
+      query: ({ id, token }) => ({
+        url: `/api/comments/${id}`,
+        method: "DELETE",
+        headers: {
+          authorization: `${token}`,
+        },
+      }),
+      invalidatesTags: ["comments"],
+    }),
 
     createReply: builder.mutation({
       query: ({ id, body, token }) => ({
@@ -104,4 +114,5 @@ export const {
   useCreateReviewMutation,
   useCreateCommentMutation,
   useCreateReplyMutation,
+  useDeleteCommentMutation,
 } = rabbitHoleApi;
