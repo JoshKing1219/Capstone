@@ -95,13 +95,14 @@ function Reviews({ token, userId }) {
     updateCurrentCommentId(commentId);
   };
 
-  const [deleteComment] = useDeleteCommentMutation();
+  const [commentId, setCommentId] = useState();
+  const [deleteComment] = useDeleteCommentMutation(commentId);
 
-  const handleDeleteCommentClick = async (commentId) => {
-    console.log(commentId);
-    updateCurrentCommentId(commentId);
-    console.log(updateCurrentCommentId());
-    await deleteComment({ id: currentCommentId, token });
+  const handleDeleteCommentClick = async () => {
+    setCommentId(commentId);
+    await deleteComment({ id: commentId, token });
+
+    console.log(deleteComment());
   };
 
   return (
